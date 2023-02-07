@@ -1,62 +1,29 @@
-# Entregáveis
- Pequena documentação no README explicando suas decisões arquiteturais, versões de linguagem,
-ferramentas utilizadas e instruções para a subida do projeto.
+INSTRUÇÕES SOBRE O PROJETO
 
- É obrigatório a criação de um projeto no seu Github para que vejamos os passos feitos
-através dos commits.
+O projeto é a representação de um sistema de agendamento de transferências financeiras, com um front-end manipulando informações através de uma REST API.
+Foi desenvolvido em Vue 3, criado com Vite e Vuetify para a manipulação dos componentes.
+O projeto está utilizando Axios para a comunicação com o back-end.
+Foi desenvolvido na IDE Visual Studio Code.
+Para a execução do projeto, é necessário ter instalado o Node e todas as suas dependências (recomendável ter a versão LTS).
+Com node instalado, abra o CMD e navegue até a pasta do projeto. (Ex: C:\Projetos\namibank-vue).
+Insira os seguintes comandos respectivamente:
+npm run build
+npm run dev
 
-# Avaliação
+O back-end está desenvolvido na linguagem Java, utilizando o framework Spring Boot, a versão do Java SDK utilizada é a 17, e a versão do Spring Boot é a 3.0.2.
+O projeto utiliza o Maven como gerenciador de dependências.
+Para a persistência dos dados, apenas em tempo de execução, foi utilizado o banco de dados H2.
+A arquitetura do projeto é composta pelas classes Controller, onde estão definidas as rotas a serem acessadas, Model, onde é definida a entidade manipulável do sistema e Service, onde está contida a regra de negócios. Também foram criadas classes de Exception para realizar o tratamento de erros de forma personalizada.
+Para a execução do back-end, por questões de facilidade, optei por criar uma imagem Docker, por isso, para executar é necessária a ferramenta Docker Desktop instalada.
+Para realizar a subida da imagem no container do Docker, primeiramente acesse a pasta raiz do projeto pelo cmd (Ex: C:\Projetos\transf-financeira-springboot)
+Insira os seguintes comandos:
+docker build -t namibankapi
+docker run -p 8000:8080 namibankapi
 
-Desenvolver tanto a API quanto o front-end (Spring boot e Vue no front, caso não tenha conhecimentos de vue, aceitamos o front com angular)
+OBS: Caso não queira usar o Docker, pode-se usar qualquer IDE com suporte a Java (NetBeans, IntelliJ), porém neste caso, é necessário alterar a porta de acesso da API no FRONT em 'services/api.js' para 8080, pois está configurada para acessar 8000 como padrão.
 
-O objetivo dessa tarefa é avaliar como você vai desenvolver o código em termos de estilo,
-eficiência, qualidade e prazo de entrega.
+UTILIZAÇÃO DO SISTEMA
 
-A tarefa é a seguinte:
-
-Desenvolver um sistema de agendamento de transferências financeiras.
-
-1) O usuário deve poder agendar uma transferência financeira com as seguintes
- informações:
- Conta de origem (padrão XXXXXX)
- Conta de destino (padrão XXXXXX)
- Valor da transferência
- Taxa (a ser calculada)
- Data da transferência (data que será realizada a transferência)
- Data de agendamento (hoje)
- 
-2) Cada tipo de transação segue uma regra diferente para cálculo da taxa
-
- A: Tranferências no mesmo dia do agendamento tem uma taxa de $3 mais 3% do valor a
-ser transferido;
-
-B: Tranferências até 10 dias da data de agendamento possuem uma taxa de $12.
-
-C: Operações do tipo C tem uma taxa regressiva conforme a data de
-transferência:
-
- acima de 10 dias da data de agendamento 8.2%
- 
- acima de 20 dias da data de agendamento 6.9%
- 
- acima de 30 dias da data de agendamento 4.7%
- 
- acima de 40 dias da data de agendamento 1.7%
- 
- D: Operações do tipo D tem a taxa igual a A, B ou C dependendo do valor da
-transferência.
-
- Valores até $1.000 seguem a taxação tipo A
- 
- Valores de $1.001 até $2.000 seguem a taxação tipo B
- 
- Valores maiores que $2.000 seguem a taxação tipo C
- 
-Obs: Caso não haja taxa aplicável, lançar um alerta sobre o erro.
-
-3) O usuário deve poder ver todos os agendamentos cadastrados.
-
-Nota: A persistência deve ser feita em banco de dados em memória (h2, por exemplo).
-Boa sorte!
-
-
+O sistema possui duas telas, uma para realizar transferências e a outra para acessar o histórico de transferências realizadas, podendo ser alternadas pela Side Bar.
+Para poder realizar um agendamento de transferência financeira, basta preencher todos os campos na tela principal e clicar em 'Confirmar'. Para ver o agendamento realizado, basta se direcionar à tela de histórico e selecionar o horário correspondente a transferência desejada.
+É possível entender a regra aplicada para as taxas no campo 'Entenda nossas taxas', também disponível na Side Bar.
