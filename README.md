@@ -5,7 +5,8 @@ Foi desenvolvido em Vue 3, criado com Vite e Vuetify para a manipulação dos co
 O projeto está utilizando Axios para a comunicação com o back-end, e foi desenvolvido na IDE Visual Studio Code.<br/>
 Para a execução do front-end, é necessário ter instalado o Node e todas as suas dependências (recomendável ter a versão LTS).<br/>
 Com node instalado, abra o CMD e navegue até a pasta do projeto. (Ex: C:\Projetos\namibank-vue).<br/>
-Insira os seguintes comandos respectivamente:<br/>
+Insira os seguintes comandos, respectivamente:<br/>
+npm install<br/>
 npm run build<br/>
 npm run dev<br/><br/>
 
@@ -28,6 +29,7 @@ O sistema possui duas telas, uma para realizar transferências e a outra para ac
 Para poder realizar um agendamento de transferência financeira, basta preencher todos os campos na tela principal e clicar em 'Confirmar'.<br/>
 Para ver o agendamento realizado, basta se direcionar à tela de histórico e selecionar o horário correspondente a transferência desejada. <br/>
 É possível entender a regra aplicada para as taxas no campo 'Entenda nossas taxas', também disponível na Side Bar.
+OBS: Caso esteja utilizando a API via Docker, irá perceber que o horário no histórico está em padrão UTC, isso ocorre pois é o padrão no linux criado pela virtualização do Docker. Caso utilize o depurador da IDE, o horário ficará normal.
 
 ![Transferencia](https://user-images.githubusercontent.com/56372170/217151263-1d6e1407-0622-4d9f-a8e7-72229b79f063.png)
 ![Historico](https://user-images.githubusercontent.com/56372170/217151272-351fc093-8f9f-4eca-8c16-0a1a0d5a4ab1.png)
