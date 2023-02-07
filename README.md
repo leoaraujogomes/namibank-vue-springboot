@@ -17,7 +17,7 @@ A arquitetura do projeto é composta pelas classes Controller, onde estão defin
 Para a execução do back-end, por questões de facilidade, optei por criar uma imagem Docker, por isso, para executar é necessária a ferramenta Docker Desktop instalada.<br/>
 Para realizar a subida da imagem no container do Docker, primeiramente acesse a pasta raiz do projeto pelo cmd (Ex: C:\Projetos\transf-financeira-springboot)<br/>
 Insira os seguintes comandos:<br/>
-docker build -t namibankapi<br/>
+docker build -t namibankapi .<br/>
 docker run -p 8000:8080 namibankapi<br/><br/>
 
 OBS: Caso não queira usar o Docker, pode-se usar qualquer IDE com suporte a Java (NetBeans, IntelliJ), porém neste caso, é necessário alterar a porta de acesso da API no FRONT em 'services/api.js' para 8080, pois está configurada para acessar 8000 como padrão.
